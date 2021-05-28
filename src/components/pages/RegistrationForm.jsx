@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button } from "@material-ui/core";
 import axios from "axios";
 import base_url from '../../api/bootApi';
+import { toast } from "react-toastify";
 
 const RegistrationForm = () => {
   const [userData, setUserData] = useState({
@@ -42,9 +43,14 @@ const RegistrationForm = () => {
   };
 
   const postDataToServer = (userData) => {
+   
     axios.post(`${base_url}/user/`,userData).then((response) => {
       console.log(response);
       console.log("success");
+      toast.success("Registration successfully",{
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+      // alert("register successfully");
     },(error)=>{
       console.log(error);
       console.log("something went wrong");
@@ -63,7 +69,7 @@ const RegistrationForm = () => {
           <form onSubmit={RegistrationFormSubmit}>
             {/**userName field*/}
             <TextField
-              className="form-control mb-3"
+                        className="form-control mb-3"
               name="userName"
               onChange={inputEvent}
               value={userData.userName}
@@ -73,7 +79,7 @@ const RegistrationForm = () => {
 
             {/**password field*/}
             <TextField
-              className="form-control mb-3"
+                        className="form-control mb-3"
               name="password"
               onChange={inputEvent}
               value={userData.password}
@@ -82,7 +88,7 @@ const RegistrationForm = () => {
             />
             {/**firstName field*/}
             <TextField
-              className="form-control mb-3"
+                        className="form-control mb-3"
               name="firstName"
               onChange={inputEvent}
               value={userData.firstName}
@@ -91,7 +97,7 @@ const RegistrationForm = () => {
             />
             {/**lastName field*/}
             <TextField
-              className="form-control mb-3"
+                        className="form-control mb-3"
               name="lastName"
               onChange={inputEvent}
               value={userData.lastName}
@@ -100,7 +106,7 @@ const RegistrationForm = () => {
             />
             {/**e-mail field*/}
             <TextField
-              type="email"
+                        type="email"
               className="form-control mb-3"
               name="email"
               onChange={inputEvent}
@@ -110,7 +116,7 @@ const RegistrationForm = () => {
             />
             {/**phone number field*/}
             <TextField
-              type="number"
+                        type="number"
               className="form-control mb-3"
               name="phone"
               onChange={inputEvent}
